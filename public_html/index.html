@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style type="text/css">
+            td {
+                border: inset 1px black;
+                width: 50px;
+                height: 40px;
+                text-align: center;
+            }
+
+			td:hover{
+				box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+			}
+
+            #calc {
+                position: relative;
+                left: 300px;
+                top: 50px;
+            }
+
+            .clickMe{
+            	cursor: pointer;
+            }
+        </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <script type="text/Javascript">
+            $(document).ready(function() {
+				$('.clickMe').click(function(){
+					if(this.innerText=="C")
+					{
+						this.parentNode.parentNode.children[0].children[0].innerText = "";
+					}
+					else if(this.innerText=="=")
+					{
+                                            var total;
+						this.parentNode.parentNode.children[0].children[0].innerText = eval(this.parentNode.parentNode.children[0].children[0].innerText);
+					}
+					else
+					{
+						this.parentNode.parentNode.children[0].children[0].innerText += this.innerText;
+					}
+				});
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="calc">
+            <table>
+                <tr><td colspan="3"></td><td class="clickMe">C</td></tr>
+                <tr><td class="clickMe">7</td><td class="clickMe">8</td><td class="clickMe">9</td><td class="clickMe">/</td></tr>
+                <tr><td class="clickMe">4</td><td class="clickMe">5</td><td class="clickMe">6</td><td class="clickMe">*</td></tr>
+                <tr><td class="clickMe">1</td><td class="clickMe">2</td><td class="clickMe">3</td><td class="clickMe">-</td></tr>
+                <tr><td class="clickMe">.</td><td class="clickMe">0</td><td class="clickMe">=</td><td class="clickMe">+</td></tr>
+            </table>
+        </div>
+    </body>
+</html>
